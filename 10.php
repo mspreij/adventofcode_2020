@@ -22,6 +22,6 @@ for ($i=1; $i < count($numbers); $i++) {
     $configs_at[$num] = 0;
     for ($j=1; $j <= 3; $j++) $configs_at[$num] += $configs_at[$num-$j] ?? 0;
 }
-echo end($configs_at);
+echo end($configs_at)."\n"; // 28346956187648 in 0.00038 seconds
 
 ?>
