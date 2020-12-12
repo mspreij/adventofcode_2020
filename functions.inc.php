@@ -12,7 +12,7 @@ function time_taken($tally=0, $precision=5) {
     }
     $duration = $now - $time;
     $time = $now;
-    $out = "That took ".round($duration, $precision)." seconds.\n";
+    $out = "\nThat took ".round($duration, $precision)." seconds.\n";
     if ($tally) { // time passed since last tally
         $since_start      = $now - $start;
         $since_last_notch = $now - $notch;
