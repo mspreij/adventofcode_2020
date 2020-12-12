@@ -40,17 +40,19 @@ $wp = [10, 1];
 foreach ($data as $i => $course) {
     $action = substr($course, 0, 1);
     $amount = substr($course, 1);
-    // N E W S & F change position, R L change direction
+    // update waypoint
     if (in_array($action, ['N','E','W','S'])) {
         $A = $cardinals[$action];
         $wp[$A[0]] += $A[1] * $amount;
     }
+    // rotate waypoint
     if (in_array($action, ['L', 'R'])) {
         $turns = $amount / 90;
         for ($i=1; $i <= $turns; $i++) {
             $wp = ($action === 'L') ? [-$wp[1], $wp[0]] : [$wp[1], -$wp[0]]; // rotation
         }
     }
+    // move ship
     if ($action === 'F') {
         $pos[0] += $wp[0] * $amount;
         $pos[1] += $wp[1] * $amount;
@@ -58,7 +60,5 @@ foreach ($data as $i => $course) {
 }
 
 echo abs($pos[0]) + abs($pos[1]);
-
-// echo time_taken();
 
 ?>
